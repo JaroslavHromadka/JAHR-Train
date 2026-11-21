@@ -1,0 +1,22 @@
+<form [formRoot]="form">
+    <div class="main">
+        <div class="body">
+            <div class="left">
+                <app-train-header-component [trainHeader]="form.header"></app-train-header-component>
+                <div class="mt-5">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+            </div>
+
+            <div class="right mt-4">
+                @for (station of form.stations; track $index) {
+                <app-station-component [station]="station"
+                    (removeStation)="removeStation($index)"></app-station-component>
+                }
+                <button type="button" class="btn btn-success" (click)="addStation()">Add station</button>
+            </div>
+        </div>
+
+
+    </div>
+</form>

@@ -1,0 +1,41 @@
+<div class="mb-2">
+    <div class="station-row">
+        <label for="name" class="col-form-label">Station</label>
+        <div>
+            <input id="name" type="text" class="form-control" [formField]="station().name"
+                [ngClass]="{'is-invalid': station().name().touched() && station().name().invalid()}">
+            @for(error of station().name().errors(); track error) {
+            <div class="invalid-feedback">{{error.message}}</div>
+            }
+        </div>
+        <label for="from" class="col-form-label">From</label>
+        <div class="interval">
+            <input id="from" type="number" class="form-control" [formField]="station().from"
+                [ngClass]="{'is-invalid': station().from().touched() && station().from().invalid()}">
+            @for(error of station().from().errors(); track error) {
+            <div class="invalid-feedback">{{error.message}}</div>
+            }
+        </div>
+        <label for="to" class="col-form-label">To</label>
+        <div class="interval">
+            <input id="to" type="number" class="form-control" [formField]="station().to"
+                [ngClass]="{'is-invalid': station().to().touched() && station().to().invalid()}">
+            @for(error of station().to().errors(); track error) {
+            <div class="invalid-feedback">{{error.message}}</div>
+            }
+        </div>
+        <div>
+            <button type="button" class="btn btn-danger" (click)="onRemoveStation()">Remove</button>
+        </div>
+    </div>
+    <div class="terminal mt-1">
+        <div>
+            <button type="button" class="btn btn-secondary" type="button" (click)="onAddTerminal()">Add terminal</button>
+        </div>
+        <div>
+            @for(terminal of station().terminals; track $index) {
+            <app-terminal-component [terminal]="terminal" (removeTerminal)="removeTerminal($index)"></app-terminal-component>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div>
+    <div class="form-group">
+        <label for="code">Code</label>
+        <input id="code" type="text" class="form-control" [formField]="trainHeader().code"
+            [ngClass]="{'is-invalid': trainHeader().code().touched() && trainHeader().code().invalid()}">
+        @for(error of trainHeader().code().errors(); track error){
+        <div class="invalid-feedback">{{ error.message }}</div>
+        }
+    </div>
+    <div>
+        <label for="wagonsCount">Wagons count</label>
+        <input id="wagonsCount" type="number" class="form-control" [formField]="trainHeader().wagonsCount"
+            [ngClass]="{'is-invalid': trainHeader().wagonsCount().touched() && trainHeader().wagonsCount().invalid()}">
+        @for(error of trainHeader().wagonsCount().errors(); track error) {
+        <div class="invalid-feedback">{{error.message}}</div>
+        }
+    </div>
+    <div>
+        <label for="maxLength">Max length</label>
+        <input id="maxLength" type="number" class="form-control" [formField]="trainHeader().maxLength"
+            [ngClass]="{'is-invalid': trainHeader().maxLength().touched() && trainHeader().maxLength().invalid()}">
+        @for(error of trainHeader().maxLength().errors(); track error) {
+        <div class="invalid-feedback">{{error.message}}</div>
+        }
+    </div>
+    <div>
+        <label for="maxWeight">Max weight</label>
+        <input id="maxWeight" type="number" class="form-control" [formField]="trainHeader().maxWeight"
+            [ngClass]="{'is-invalid': trainHeader().maxWeight().touched() && trainHeader().maxWeight().invalid()}">
+        @for(error of trainHeader().maxWeight().errors(); track error) {
+        <div class="invalid-feedback">{{error.message}}</div>
+        }
+    </div>
+</div>

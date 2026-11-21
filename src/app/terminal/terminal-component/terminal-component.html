@@ -1,0 +1,11 @@
+<div class="mb-1 terminal-row">
+    <label for="name" class="col-form-label">Terminal</label>
+    <div class="name">
+        <input type="text" id="name" class="form-control" [formField]="terminal().name"
+            [ngClass]="{'is-invalid': terminal().name().touched() && terminal().name().invalid()}">
+        @for(error of terminal().name().errors(); track error) {
+        <div class="invalid-feedback">{{ error.message }}</div>
+        }
+    </div>
+    <button type="button" class="btn btn-light" (click)="onRemoveTerminal()">❌</button>
+</div>
